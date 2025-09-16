@@ -1,0 +1,17 @@
+@import "tailwindcss"; 
+
+
+/* Custom styles for the hover effect from the video */
+.table-row-hover {
+  transition: all 0.3s ease;
+}
+
+.table-row-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark mode styles */
+.dark .table-row-hover:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
