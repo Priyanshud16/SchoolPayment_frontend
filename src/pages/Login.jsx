@@ -12,21 +12,30 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+ const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setError('');
 
+  try {
     const result = await login(email, password);
-    
+    console.log(result);
     if (result.success) {
+      // Save token in localStorage
+      if (result.data?.token) {
+        localStorage.setItem('token', result.data.token);
+      }
       navigate('/');
     } else {
       setError(result.message);
     }
-    
+  } catch (err) {
+    setError('Something went wrong. Please try again.',err);
+  } finally {
     setLoading(false);
-  };
+  }
+};
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">

@@ -130,7 +130,7 @@ export const transactionAPI = IS_DEMO
   : {
       getAll: (params) => api.get('/transactions', { params: toSearchParams(cleanParams(params)) }),
       getBySchool: (schoolId, params) => api.get(`/transactions/school/${schoolId}`, { params: toSearchParams(cleanParams(params)) }),
-      getStatus: (orderId) => api.get(`/transaction-status/${orderId}`),
+      getStatus: (orderId) => api.get(`/transactions/transaction-status/${orderId}`),
     };
 
 export const paymentAPI = IS_DEMO
